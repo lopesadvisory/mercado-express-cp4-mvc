@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Mercado Express - Produtos</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{fragments/nav :: nav}"></div>
+
+<div class="container">
+    <h1 class="mb-4">Produtos cadastrados</h1>
+
+    <div th:if="${mensagem}" class="alert alert-success" th:text="${mensagem}"></div>
+    <div th:if="${erro}" class="alert alert-danger" th:text="${erro}"></div>
+
+    <table class="table table-striped table-hover bg-white shadow-sm">
+        <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Setor</th>
+            <th>Tamanho</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="produto : ${produtos}">
+            <td th:text="${produto.id}"></td>
+            <td th:text="${produto.nome}"></td>
+            <td th:text="${produto.tipo}"></td>
+            <td th:text="${produto.setor}"></td>
+            <td th:text="${produto.tamanho}"></td>
+            <td th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}"></td>
+            <td>
+                <a class="btn btn-sm btn-outline-primary" th:href="@{/produtos/{id}(id=${produto.id})}">Ver</a>
+                <a sec:authorize="isAuthenticated()" class="btn btn-sm btn-outline-secondary" th:href="@{/produtos/{id}/editar(id=${produto.id})}">Editar</a>
+                <form sec:authorize="isAuthenticated()" th:action="@{/produtos/{id}/excluir(id=${produto.id})}" method="post" class="d-inline"
+                      onsubmit="return confirm('Confirma a exclusão deste produto?');">
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(produtos)}">
+            <td colspan="7" class="text-center text-muted">Nenhum produto cadastrado.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

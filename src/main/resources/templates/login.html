@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mercado Express - Entrar</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="d-flex align-items-center" style="min-height: 100vh; background-color: #f4f4f4;">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h1 class="h4 mb-3 text-center">Mercado Express</h1>
+
+                    <div th:if="${param.error}" class="alert alert-danger">Usuário ou senha inválidos.</div>
+                    <div th:if="${param.logout}" class="alert alert-success">Sessão encerrada com sucesso.</div>
+
+                    <form th:action="@{/login}" method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Usuário</label>
+                            <input type="text" name="username" class="form-control" autofocus>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Senha</label>
+                            <input type="password" name="password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+
+                    <a class="btn btn-link w-100 mt-2" th:href="@{/produtos}">Voltar para os produtos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

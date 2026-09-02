@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Mercado Express - Detalhe do Produto</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{fragments/nav :: nav}"></div>
+
+<div class="container">
+    <div class="card shadow-sm" style="max-width: 480px;">
+        <div class="card-body">
+            <h1 class="card-title h4" th:text="${produto.nome}"></h1>
+            <p class="mb-1"><strong>Id:</strong> <span th:text="${produto.id}"></span></p>
+            <p class="mb-1"><strong>Tipo:</strong> <span th:text="${produto.tipo}"></span></p>
+            <p class="mb-1"><strong>Setor:</strong> <span th:text="${produto.setor}"></span></p>
+            <p class="mb-1"><strong>Tamanho:</strong> <span th:text="${produto.tamanho}"></span></p>
+            <p class="mb-3"><strong>Preço:</strong> <span th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}"></span></p>
+
+            <a class="btn btn-outline-secondary btn-sm" th:href="@{/produtos}">Voltar</a>
+            <a sec:authorize="isAuthenticated()" class="btn btn-outline-primary btn-sm" th:href="@{/produtos/{id}/editar(id=${produto.id})}">Editar</a>
+            <form sec:authorize="isAuthenticated()" th:action="@{/produtos/{id}/excluir(id=${produto.id})}" method="post" class="d-inline"
+                  onsubmit="return confirm('Confirma a exclusão deste produto?');">
+                <button type="submit" class="btn btn-outline-danger btn-sm">Excluir</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
