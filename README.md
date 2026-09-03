@@ -137,4 +137,4 @@ Nenhuma credencial fica salva no código ou no repositório - elas são lidas em
 
 ## Vídeo de demonstração
 
-**[a preencher com o link do vídeo mostrando a interface Web em funcionamento]**
+**[https://www.youtube.com/watch?v=NyY3SeeGFn4]**

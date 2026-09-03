@@ -16,3 +16,6 @@ https://mercado-express-cp4-mvc.onrender.com
 
 Sistema utilizado para o Deploy:
 Render
+
+Link do vídeo de demonstração:
+[https://www.youtube.com/watch?v=NyY3SeeGFn4]
