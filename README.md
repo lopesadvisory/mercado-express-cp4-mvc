@@ -4,7 +4,7 @@ Trabalho de Checkpoint 4 (Parte 2 - MVC, Security e Deploy) da disciplina de TDS
 
 Este repositório é a continuação do projeto entregue na Parte 1 ([mercado-express-cp4](https://github.com/lopesadvisory/mercado-express-cp4), a API REST com HATEOAS). Aqui o mesmo domínio - controle de estoque de um mercado express - ganha uma interface Web construída com Spring MVC e Thymeleaf, com o CRUD completo (Create, Read, Update e Delete) navegável por links e botões, e com Spring Security controlando o que é público e o que exige login.
 
-A aplicação está publicada e em funcionamento em: **[a preencher após o deploy no Render]**
+A aplicação está publicada e em funcionamento em: **https://mercado-express-cp4-mvc.onrender.com**
 
 ## Integrantes
 
@@ -112,13 +112,16 @@ A aplicação usa Spring Security com um usuário administrador configurado em m
 - **Rotas públicas:** página inicial, listagem de produtos (`GET /produtos`), detalhe de um produto (`GET /produtos/{id}`) e a tela de login.
 - **Rotas privadas (exigem autenticação):** cadastro (`GET`/`POST /produtos/novo` e `POST /produtos`), edição (`GET`/`POST /produtos/{id}/editar`) e exclusão (`POST /produtos/{id}/excluir`).
 
-As credenciais do usuário administrador são lidas de variáveis de ambiente (`ADMIN_USER` e `ADMIN_PASSWORD`), com um valor padrão apenas para uso em desenvolvimento local.
+As credenciais do usuário administrador são lidas de variáveis de ambiente (`ADMIN_USER` e `ADMIN_PASSWORD`), com um valor padrão apenas para uso em desenvolvimento local. Na aplicação publicada, o login para testar as operações de cadastro, edição e exclusão é:
+
+- **Usuário:** `CPJAVA`
+- **Senha:** `CPJAVA`
 
 ## Deploy
 
 A aplicação está publicada no Render, com build automatizado a partir do `Dockerfile` e do `render.yaml` presentes no repositório, reaproveitando o mesmo banco Oracle FIAP da Parte 1.
 
-- Aplicação publicada: **[a preencher após o deploy no Render]**
+- Aplicação publicada: **https://mercado-express-cp4-mvc.onrender.com**
 - Repositório GitHub: https://github.com/lopesadvisory/mercado-express-cp4-mvc
 
 ## Executando o projeto localmente

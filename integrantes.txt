@@ -12,7 +12,7 @@ Link do GitHub (com o ReadMe do projeto):
 https://github.com/lopesadvisory/mercado-express-cp4-mvc
 
 Link da aplicação publicada:
-[a preencher após o deploy no Render]
+https://mercado-express-cp4-mvc.onrender.com
 
 Sistema utilizado para o Deploy:
 Render
